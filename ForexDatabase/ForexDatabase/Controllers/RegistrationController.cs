@@ -14,7 +14,7 @@ namespace ForexDatabase.Controllers
 {
     public class RegistrationController : ApiController
     {
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
+        //[EnableCors(origins: "*", headers: "*", methods: "*")]
         [Route("api/register")]
         [HttpPost]
         public IdentityResult Register(ForexFunUserModel user)
