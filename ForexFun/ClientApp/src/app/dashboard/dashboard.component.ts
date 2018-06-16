@@ -9,7 +9,6 @@ import { HttpClient } from '@angular/common/http';
 export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
-    throw new Error("Method not implemented.");
   }
   public currencies: Currency[];
 
@@ -18,6 +17,7 @@ export class DashboardComponent implements OnInit {
   constructor(http: HttpClient) {
     http.get<Currency[]>(this.url + 'api/dashboard').subscribe(result => {
       this.currencies = result;
+      console.log(result);
     }, error => console.error(error));
   }
 }
