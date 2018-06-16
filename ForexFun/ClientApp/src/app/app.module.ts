@@ -14,6 +14,7 @@ import { UserComponent } from './user/user.component';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
 import { SignInComponent } from './user/sign-in/sign-in.component';
 import { AuthenticationGuard } from './authentication/authentication.guard';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AuthenticationGuard } from './authentication/authentication.guard';
     FetchDataComponent,
     SignUpComponent,
     UserComponent,
-    SignInComponent
+    SignInComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -34,7 +36,7 @@ import { AuthenticationGuard } from './authentication/authentication.guard';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent, canActivate: [AuthenticationGuard] },
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthenticationGuard] },
-      { path: 'user', component: UserComponent }
+      { path: 'dashboard', component: DashboardComponent }
     ])
   ],
   providers: [UserService, AuthenticationGuard],
