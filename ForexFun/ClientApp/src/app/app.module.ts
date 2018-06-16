@@ -6,9 +6,6 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { UserService } from './shared/user.service';
 import { UserComponent } from './user/user.component';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
@@ -20,9 +17,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
   declarations: [
     AppComponent,
     NavMenuComponent,
-    HomeComponent,
-    CounterComponent,
-    FetchDataComponent,
     SignUpComponent,
     UserComponent,
     SignInComponent,
@@ -33,10 +27,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent, canActivate: [AuthenticationGuard] },
-      { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthenticationGuard] },
-      { path: 'dashboard', component: DashboardComponent }
+      { path: '', component: UserComponent, pathMatch: 'full' },
+      { path: 'dashboard', component: DashboardComponent, canActivate: [AuthenticationGuard] }
     ])
   ],
   providers: [UserService, AuthenticationGuard],
