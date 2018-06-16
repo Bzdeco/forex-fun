@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
+    throw new Error("Method not implemented.");
   }
   public currencies: Currency[];
 
