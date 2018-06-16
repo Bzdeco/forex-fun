@@ -12,6 +12,7 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { UserService } from './shared/user.service';
 import { UserComponent } from './user/user.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { UserComponent } from './user/user.component';
     CounterComponent,
     FetchDataComponent,
     SignUpComponent,
-    UserComponent
+    UserComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -31,7 +33,8 @@ import { UserComponent } from './user/user.component';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
-      { path: 'register', component: SignUpComponent }
+      { path: 'register', component: SignUpComponent },
+      { path: 'dashboard', component: DashboardComponent }
     ])
   ],
   providers: [UserService],

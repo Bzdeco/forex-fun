@@ -32,6 +32,11 @@
                 <span class='glyphicon glyphicon-th-list'></span> Register
               </a>
             </li>
+            <li [routerLinkActive]='["link-active"]'>
+              <a [routerLink]='["/dashboard"]' (click)='collapse()'>
+                <span class='glyphicon glyphicon-th-list'></span> Dashboard
+              </a>
+            </li>
           </ul>
         </div>
     </div>
