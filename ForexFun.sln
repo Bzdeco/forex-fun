@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ForexFun", "ForexFun\ForexFun.csproj", "{04EA748C-415D-4732-853A-5AAB22146D18}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostgreSQL.AspNet.Identity.EntityFramework", "..\PostgreSQLEF\src\PostgreSQL.AspNet.Identity.EntityFramework\PostgreSQL.AspNet.Identity.EntityFramework.csproj", "{FA718219-F0D7-4E24-855F-3CB01C2A857E}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,10 +15,6 @@ Global
 		{04EA748C-415D-4732-853A-5AAB22146D18}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04EA748C-415D-4732-853A-5AAB22146D18}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{04EA748C-415D-4732-853A-5AAB22146D18}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FA718219-F0D7-4E24-855F-3CB01C2A857E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FA718219-F0D7-4E24-855F-3CB01C2A857E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FA718219-F0D7-4E24-855F-3CB01C2A857E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FA718219-F0D7-4E24-855F-3CB01C2A857E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
