@@ -310,6 +310,10 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\PostgreSQLEF\src\PostgreSQL.AspNet.Identity.EntityFramework\PostgreSQL.AspNet.Identity.EntityFramework.csproj">
+      <Project>{fa718219-f0d7-4e24-855f-3cb01c2a857e}</Project>
+      <Name>PostgreSQL.AspNet.Identity.EntityFramework</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{ad63de46-4aa4-4a98-b985-faa7f9c3e1a9}</Project>
       <Name>Model</Name>
