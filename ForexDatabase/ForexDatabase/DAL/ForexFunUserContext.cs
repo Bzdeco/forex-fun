@@ -9,7 +9,7 @@ namespace ForexDatabase.DAL
 {
     public class ForexFunUserContext : IdentityDbContext<ForexFunUser>
     {
-        public ForexFunUserContext() : base("DatabaseContext", false)
+        public ForexFunUserContext() : base("AuthDbContext", false)
         {
         }
 

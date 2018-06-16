@@ -7,12 +7,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Security.Claims;
 using System.Web.Http;
 using System.Web.Http.Cors;
 
 namespace ForexDatabase.Controllers
 {
-    public class RegistrationController : ApiController
+    public class AuthenticationController : ApiController
     {
         //[EnableCors(origins: "*", headers: "*", methods: "*")]
         [Route("api/register")]
@@ -24,6 +25,16 @@ namespace ForexDatabase.Controllers
             var forexFunUser = new ForexFunUser { UserName = user.Username };
             IdentityResult result = manager.Create(forexFunUser, user.Password);
             return result;
+        }
+
+        [HttpGet]
+        [Authorize]
+        [Route("api/userid")]
+        public string GetUserId()
+        {
+            var identityClaims = (ClaimsIdentity) User.Identity;
+            IEnumerable<Claim> claims = identityClaims.Claims;
+            return identityClaims.FindFirst("Id").Value;
         }
     }
 }

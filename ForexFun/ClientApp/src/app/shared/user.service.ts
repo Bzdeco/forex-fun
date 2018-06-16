@@ -22,4 +22,8 @@ export class UserService {
     var requestHeaders = new HttpHeaders({ 'Content-Type': 'application/x-www-urlencoded', 'No-Auth': 'True' });
     return this.http.post(this.url + 'token', data, { headers: requestHeaders });
   }
+
+  getUserId() {
+    return this.http.get(this.url + 'api/userid');
+  }
 }

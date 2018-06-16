@@ -7,7 +7,7 @@ using System.Web;
 
 namespace ForexDatabase.DAL
 {
-    public class DatabaseInitializer : DropCreateDatabaseIfModelChanges<DatabaseContext>
+    public class DatabaseInitializer : DropCreateDatabaseAlways<DatabaseContext>
     {
         protected override void Seed(DatabaseContext context)
         {
