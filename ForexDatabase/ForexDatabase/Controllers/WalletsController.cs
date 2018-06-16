@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using ForexDatabase.DAL;
 using Model;
@@ -18,6 +19,7 @@ namespace ForexDatabase.Controllers
         private DatabaseContext db = new DatabaseContext();
 
         // GET: api/Wallets
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IQueryable<Wallet> GetWallets()
         {
             return db.Wallets;

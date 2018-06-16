@@ -1,0 +1,20 @@
+<table class='table'>
+  <thead>
+    <tr>
+      <th>Currency</th>
+      <th>Your amount</th>
+      <th>Amount to sell</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let wallet of wallets">
+      <td>{{ wallet.CurrencyId }}</td>
+      <td>{{ wallet.Amount }}</td>
+      <td>
+        <input #amount
+               (keyup.enter)="sellCurrency(wallet.CurrencyId, amount.value); amount.value=''">
+      </td>
+      <td><button (click)="sellCurrency(wallet.CurrencyId, amount.value); amount.value=''">Sell</button></td>
+    </tr>
+  </tbody>
+</table>

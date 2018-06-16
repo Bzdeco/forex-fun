@@ -20,6 +20,11 @@ export class DashboardComponent implements OnInit {
       console.log(result);
     }, error => console.error(error));
   }
+
+  buyCurrency(currencyName, amount) {
+    console.log("Currency: " + currencyName);
+    console.log("Amount: " + amount);
+  }
 }
 
 interface Currency {

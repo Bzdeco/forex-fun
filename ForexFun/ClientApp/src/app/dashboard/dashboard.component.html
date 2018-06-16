@@ -3,12 +3,18 @@
       <tr>
         <th>Currency</th>
         <th>Value</th>
+        <th>Amount to buy</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let currency of currencies">
         <td>{{ currency.Name }}</td>
         <td>{{ currency.Value }}</td>
+        <td><input #amount
+                 (keyup.enter)="buyCurrency(currency.Name, amount.value); amount.value=''"></td>
+         <td><button (click)="buyCurrency(currency.Name, amount.value); amount.value=''">Buy</button></td>
       </tr>
     </tbody>
 </table>
+<app-wallet></app-wallet>
+
