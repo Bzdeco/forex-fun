@@ -1,0 +1,11 @@
+<div class="row">
+  <form #userRegistrationForm="ngForm" (ngSubmit)="OnSubmit(Username.value, Password.value)">
+    Username:
+    <input type="text" name="Username" #Username ngModel required /><br />
+    Password:
+    <input type="password" name="Password" #Password ngModel required /><br />
+    <button type="submit">Login</button>
+  </form>
+
+  <button (click)="Logout()">Logout</button>
+</div>

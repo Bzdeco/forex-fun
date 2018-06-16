@@ -9,9 +9,11 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
-import { SignUpComponent } from './sign-up/sign-up.component';
 import { UserService } from './shared/user.service';
 import { UserComponent } from './user/user.component';
+import { SignUpComponent } from './user/sign-up/sign-up.component';
+import { SignInComponent } from './user/sign-in/sign-in.component';
+import { AuthenticationGuard } from './authentication/authentication.guard';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { UserComponent } from './user/user.component';
     CounterComponent,
     FetchDataComponent,
     SignUpComponent,
-    UserComponent
+    UserComponent,
+    SignInComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -29,12 +32,12 @@ import { UserComponent } from './user/user.component';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
-      { path: 'register', component: SignUpComponent }
+      { path: 'counter', component: CounterComponent, canActivate: [AuthenticationGuard] },
+      { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthenticationGuard] },
+      { path: 'user', component: UserComponent }
     ])
   ],
-  providers: [UserService],
+  providers: [UserService, AuthenticationGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
