@@ -2,7 +2,7 @@
 Forex-like trading system to try one's hand at trading on cryptocurrency markets
 
 # Usage
-ForexFun to run requires:
+To run ForexFun requires:
 - PostgreSQL running locally on _localhost:5432_ with user _postgres_ and password _postgres_,
 - DatabaseService running (operates on PostgreSQL DB and is queried by Angular app)
 
