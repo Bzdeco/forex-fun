@@ -28,6 +28,6 @@ export class DashboardComponent implements OnInit {
 }
 
 interface Currency {
-  name: string;
-  value: number;
+  Name: string;
+  Value: number;
 }

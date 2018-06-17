@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { forEach } from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-wallet',
@@ -18,7 +19,11 @@ export class WalletComponent implements OnInit {
   constructor(http: HttpClient) {
     http.get<Wallet[]>(this.url + 'api/wallets').subscribe(result => {
       this.wallets = result;
-      console.log(result);
+      this.wallets.forEach((wallet, index) => {
+        http.get<Currency>(this.url + 'api/Currencies/' + wallet.CurrencyId).subscribe(resultCurrency => {
+          wallet.Name = resultCurrency.Name;
+        }, error => console.error(error))
+      });
     }, error => console.error(error));
   }
 
@@ -29,7 +34,13 @@ export class WalletComponent implements OnInit {
 }
 
 interface Wallet {
-  userId: number;
-  currencyId: number;
-  amount: number;
+  UserId: number;
+  CurrencyId: number;
+  Amount: number;
+  Name: string;
+}
+
+interface Currency {
+  Id: number;
+  Name: string;
 }

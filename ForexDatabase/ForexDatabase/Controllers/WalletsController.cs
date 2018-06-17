@@ -14,12 +14,12 @@ using Model;
 
 namespace ForexDatabase.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class WalletsController : ApiController
     {
         private DatabaseContext db = new DatabaseContext();
 
         // GET: api/Wallets
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IQueryable<Wallet> GetWallets()
         {
             return db.Wallets;
