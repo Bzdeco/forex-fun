@@ -11,8 +11,8 @@
         <td>{{ currency.Name }}</td>
         <td>{{ currency.Value }}</td>
         <td><input #amount
-                 (keyup.enter)="buyCurrency(currency.Name, amount.value); amount.value=''"></td>
-         <td><button (click)="buyCurrency(currency.Name, amount.value); amount.value=''">Buy</button></td>
+                 (keyup.enter)="buyCurrency(currency.CurrencyId, amount.value); amount.value=''"></td>
+         <td><button (click)="buyCurrency(currency.CurrencyId, amount.value); amount.value=''">Buy</button></td>
       </tr>
     </tbody>
 </table>

@@ -17,10 +17,11 @@ export class WalletComponent implements OnInit {
   readonly url = "http://localhost:50382/";
 
   constructor(http: HttpClient) {
-    http.get<Wallet[]>(this.url + 'api/wallets').subscribe(result => {
+    http.get<Wallet[]>(this.url + 'api/wallets/' + 1).subscribe(result => {
       this.wallets = result;
       this.wallets.forEach((wallet, index) => {
         http.get<Currency>(this.url + 'api/Currencies/' + wallet.CurrencyId).subscribe(resultCurrency => {
+          console.log(wallet.Id);
           wallet.Name = resultCurrency.Name;
         }, error => console.error(error))
       });
@@ -34,6 +35,7 @@ export class WalletComponent implements OnInit {
 }
 
 interface Wallet {
+  Id: number; 
   UserId: number;
   CurrencyId: number;
   Amount: number;

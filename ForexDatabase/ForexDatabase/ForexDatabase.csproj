@@ -220,6 +220,7 @@
     <Compile Include="Controllers\TransactionsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\WalletsController.cs" />
+    <Compile Include="Currencies\CurrencyRates.cs" />
     <Compile Include="DAL\DatabaseContext.cs" />
     <Compile Include="DAL\DatabaseInitializer.cs" />
     <Compile Include="DAL\ForexFunUserContext.cs" />

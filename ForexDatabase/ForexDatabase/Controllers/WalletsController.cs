@@ -14,32 +14,37 @@ using Model;
 
 namespace ForexDatabase.Controllers
 {
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class WalletsController : ApiController
     {
         private DatabaseContext db = new DatabaseContext();
 
         // GET: api/Wallets
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IQueryable<Wallet> GetWallets()
         {
             return db.Wallets;
         }
 
         // GET: api/Wallets/5
-        [ResponseType(typeof(Wallet))]
+        [ResponseType(typeof(IQueryable<Wallet>))]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult GetWallet(int id)
         {
-            Wallet wallet = db.Wallets.Find(id);
-            if (wallet == null)
+            IQueryable<Wallet> wallets = db.Wallets;
+            IQueryable<Wallet> walletsOfUser = wallets.Where(w => w.UserId.Equals(id)); 
+            if (walletsOfUser == null)
             {
                 return NotFound();
             }
 
-            return Ok(wallet);
+            return Ok(walletsOfUser);
         }
+        
 
         // PUT: api/Wallets/5
         [ResponseType(typeof(void))]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
+        [HttpPut]
         public IHttpActionResult PutWallet(int id, Wallet wallet)
         {
             if (!ModelState.IsValid)
@@ -75,6 +80,8 @@ namespace ForexDatabase.Controllers
 
         // POST: api/Wallets
         [ResponseType(typeof(Wallet))]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
+        [HttpPost]
         public IHttpActionResult PostWallet(Wallet wallet)
         {
             if (!ModelState.IsValid)

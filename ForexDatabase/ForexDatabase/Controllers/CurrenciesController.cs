@@ -14,12 +14,12 @@ using Model;
 
 namespace ForexDatabase.Controllers
 {
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class CurrenciesController : ApiController
     {
         private DatabaseContext db = new DatabaseContext();
 
         // GET: api/Currencies
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IQueryable<Currency> GetCurrencies()
         {
             return db.Currencies;
@@ -27,6 +27,7 @@ namespace ForexDatabase.Controllers
 
         // GET: api/Currencies/5
         [ResponseType(typeof(Currency))]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult GetCurrency(int id)
         {
             Currency currency = db.Currencies.Find(id);
