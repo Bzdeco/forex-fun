@@ -1,13 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27703.2026
+VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForexDatabase", "ForexDatabase\ForexDatabase.csproj", "{07AD18AC-5030-4AA4-BBE5-56B700747959}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{AD63DE46-4AA4-4A98-B985-FAA7F9C3E1A9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostgreSQL.AspNet.Identity.EntityFramework", "PostgreSQLEF\src\PostgreSQL.AspNet.Identity.EntityFramework\PostgreSQL.AspNet.Identity.EntityFramework.csproj", "{FA718219-F0D7-4E24-855F-3CB01C2A857E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecordsPublisher", "RecordsPublisher\RecordsPublisher.csproj", "{404116C0-0828-4FE4-AD0F-325ED864439E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseAccessLayer", "DatabaseAccessLayer\DatabaseAccessLayer.csproj", "{FBF43C1E-28F5-443D-B9E3-8EB4FBCC604E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +31,14 @@ Global
 		{FA718219-F0D7-4E24-855F-3CB01C2A857E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA718219-F0D7-4E24-855F-3CB01C2A857E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA718219-F0D7-4E24-855F-3CB01C2A857E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{404116C0-0828-4FE4-AD0F-325ED864439E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{404116C0-0828-4FE4-AD0F-325ED864439E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{404116C0-0828-4FE4-AD0F-325ED864439E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{404116C0-0828-4FE4-AD0F-325ED864439E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBF43C1E-28F5-443D-B9E3-8EB4FBCC604E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBF43C1E-28F5-443D-B9E3-8EB4FBCC604E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBF43C1E-28F5-443D-B9E3-8EB4FBCC604E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBF43C1E-28F5-443D-B9E3-8EB4FBCC604E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
