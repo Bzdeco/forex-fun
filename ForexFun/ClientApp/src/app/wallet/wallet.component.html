@@ -9,10 +9,9 @@
   <tbody>
     <tr *ngFor="let wallet of wallets">
       <td>{{ wallet.Name }}</td>
-      <td>{{ wallet.Amount }}</td>
+      <td>{{ wallet.Amount | number:'1.1-2'}}</td>
       <td>
-        <input #amount
-               (keyup.enter)="sellCurrency(wallet.CurrencyId, amount.value); amount.value=''">
+        <input #amount (keyup.enter)="sellCurrency(wallet.CurrencyId, amount.value); amount.value=''">
       </td>
       <td><button (click)="sellCurrency(wallet.CurrencyId, amount.value); amount.value=''">Sell</button></td>
     </tr>

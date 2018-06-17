@@ -9,7 +9,7 @@
     <tbody>
       <tr *ngFor="let currency of currencies">
         <td>{{ currency.Name }}</td>
-        <td>{{ currency.Value }}</td>
+        <td>{{ currency.Value | number:'1.1-2' }}</td>
         <td><input #amount
                  (keyup.enter)="buyCurrency(currency.CurrencyId, amount.value); amount.value=''"></td>
          <td><button (click)="buyCurrency(currency.CurrencyId, amount.value); amount.value=''">Buy</button></td>

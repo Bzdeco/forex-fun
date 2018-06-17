@@ -10,6 +10,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   public currencies: Currency[];
   public wallets: Wallet[];
 
@@ -29,23 +30,25 @@ export class DashboardComponent implements OnInit {
     console.log("Currency: " + currencyId);
     console.log("Amount: " + amount);
     var currencyWallet = this.wallets.find(wallet => wallet.CurrencyId === currencyId);
-    var usdWallet = this.wallets.find(wallet => wallet.CurrencyId === 1);
+    var usdWallet = this.wallets.find(wallet => wallet.CurrencyId === 1); //TODO
     var exchangeCurrency = this.currencies.find(currency => currency.CurrencyId === currencyId);
+    usdWallet.Amount -= Number(amount) * exchangeCurrency.Value;
+    console.log("Putting USD wallet: ");
+    this.http.put(this.url + "api/wallets/" + usdWallet.Id, usdWallet).subscribe();
     if (currencyWallet === undefined) {
       let newWallet = { UserId: 1, CurrencyId: currencyId, Amount: amount }; //TODO
-      usdWallet.Amount -= amount * exchangeCurrency.Value;
-      console.log("Posting: ");
+      console.log("Posting new currency wallet: ");
       console.log(newWallet);
       this.http.post(this.url + "api/wallets", newWallet).subscribe((data: any) => {
         if (data.Succeeded == true) {
           console.log('Success currency');
         }
       });
-      console.log("Puting: ");
-      this.http.put(this.url + "api/wallets/" + usdWallet.Id, usdWallet).subscribe();
     }
     else {
-
+      currencyWallet.Amount += Number(amount);
+      console.log("Putting currency wallet: ");
+      this.http.put(this.url + "api/wallets/" + currencyWallet.Id, currencyWallet).subscribe();
     }
   }
 }

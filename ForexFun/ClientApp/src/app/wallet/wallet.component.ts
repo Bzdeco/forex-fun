@@ -17,7 +17,7 @@ export class WalletComponent implements OnInit {
   readonly url = "http://localhost:50382/";
 
   constructor(http: HttpClient) {
-    http.get<Wallet[]>(this.url + 'api/wallets/' + 1).subscribe(result => {
+    http.get<Wallet[]>(this.url + 'api/wallets/' + 1).subscribe(result => { //TODO
       this.wallets = result;
       this.wallets.forEach((wallet, index) => {
         http.get<Currency>(this.url + 'api/Currencies/' + wallet.CurrencyId).subscribe(resultCurrency => {
