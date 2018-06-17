@@ -13,7 +13,6 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { UserService } from './shared/user.service';
 import { UserComponent } from './user/user.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { WalletComponent } from './wallet/wallet.component';
 
 @NgModule({
   declarations: [
@@ -24,8 +23,7 @@ import { WalletComponent } from './wallet/wallet.component';
     FetchDataComponent,
     SignUpComponent,
     UserComponent,
-    DashboardComponent,
-    WalletComponent
+    DashboardComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

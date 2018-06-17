@@ -8,8 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DashboardComponent implements OnInit {
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   public currencies: Currency[];
   public wallets: Wallet[];
@@ -23,6 +22,12 @@ export class DashboardComponent implements OnInit {
     }, error => console.error(error));
     http.get<Wallet[]>(this.url + 'api/wallets/' + 1).subscribe(result => {
       this.wallets = result;
+      this.wallets.forEach((wallet, index) => {
+        http.get<Currency>(this.url + 'api/Currencies/' + wallet.CurrencyId).subscribe(resultCurrency => {
+          console.log(wallet.Id);
+          wallet.Name = resultCurrency.Name;
+        }, error => console.error(error))
+      });
     }, error => console.error(error));
   }
 
@@ -47,6 +52,29 @@ export class DashboardComponent implements OnInit {
     }
     else {
       currencyWallet.Amount += Number(amount);
+      console.log("Putting currency wallet: ");
+      this.http.put(this.url + "api/wallets/" + currencyWallet.Id, currencyWallet).subscribe();
+    }
+  }
+
+  sellCurrency(currencyId, amount) {
+    console.log("Currency: " + currencyId);
+    console.log("Amount: " + amount);
+    var exchangeCurrency = this.currencies.find(currency => currency.CurrencyId === currencyId);
+    var usdWallet = this.wallets.find(wallet => wallet.CurrencyId === 1); //TODO
+    usdWallet.Amount += Number(amount) * exchangeCurrency.Value;
+    console.log("Putting USD wallet: ");
+    this.http.put(this.url + "api/wallets/" + usdWallet.Id, usdWallet).subscribe();
+    var currencyWallet = this.wallets.find(wallet => wallet.CurrencyId === currencyId);
+    if (Math.abs(Number(amount) - currencyWallet.Amount) < Number.EPSILON) {
+      this.http.delete(this.url + "api/wallets/" + currencyWallet.Id).subscribe((data: any) => {
+        if (data.Succeeded == true) {
+          console.log('Success delete wallet');
+        }
+      });
+    }
+    else {
+      currencyWallet.Amount -= Number(amount);
       console.log("Putting currency wallet: ");
       this.http.put(this.url + "api/wallets/" + currencyWallet.Id, currencyWallet).subscribe();
     }

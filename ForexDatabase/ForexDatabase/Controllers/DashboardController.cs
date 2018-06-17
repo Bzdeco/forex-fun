@@ -13,18 +13,24 @@ namespace ForexDatabase.Controllers
 
     public class DashboardController : ApiController
     {
+        ICurrencyRates currencyRates;
+
+        public DashboardController(ICurrencyRates currencyRates)
+        {
+            this.currencyRates = currencyRates;
+        }
+
         // GET: Dashboard
         [EnableCors(origins: "*", headers: "*", methods: "*")]
         [Route("api/dashboard")]
         [HttpGet]
         public IEnumerable<CurrencyValue> CurrenciesValues()
         {
-            CurrencyRates currencyRates = new CurrencyRates();
-            IQueryable < Currency > currencies = new CurrenciesController().GetCurrencies();
+            IQueryable <Currency> currencies = new CurrenciesController().GetCurrencies();
             List<CurrencyValue> currencyValues = new List<CurrencyValue>();
             currencies.ToList().ForEach(currency =>
                 currencyValues.Add(
-                    new CurrencyValue { CurrencyId = currency.Id, Name = currency.Name, Value = currencyRates.GetExchangeRate(currency.Id) }));
+                    new CurrencyValue { CurrencyId = currency.Id, Name = currency.Name, Value = currencyRates.GetExchangeRate(currency.Name) }));
             return currencyValues;
         }
     }
