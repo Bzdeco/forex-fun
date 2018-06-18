@@ -13,10 +13,8 @@ namespace ForexDatabase.DAL
 {
     public class DatabaseContext : DbContext
     {
-        public DbSet<User> Users { get; set; }
         public DbSet<Currency> Currencies { get; set; }
         public DbSet<Wallet> Wallets { get; set; }
-        public DbSet<Transaction> Transactions { get; set; }
 
         public DatabaseContext() : base("DatabaseContext")
         {
@@ -28,5 +26,7 @@ namespace ForexDatabase.DAL
             modelBuilder.HasDefaultSchema("public");
             base.OnModelCreating(modelBuilder);
         }
+
+        public System.Data.Entity.DbSet<Model.User> Users { get; set; }
     }
 }

@@ -7,12 +7,15 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using ForexDatabase.DAL;
 using Model;
 
 namespace ForexDatabase.Controllers
 {
+    [Authorize]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class UsersController : ApiController
     {
         private DatabaseContext db = new DatabaseContext();
@@ -25,9 +28,10 @@ namespace ForexDatabase.Controllers
 
         // GET: api/Users/5
         [ResponseType(typeof(User))]
-        public IHttpActionResult GetUser(int id)
+        public IHttpActionResult GetUser(string id)
         {
-            User user = db.Users.Find(id);
+            User user = db.Users.Where(u => u.UserId.Equals(id)).First();
+
             if (user == null)
             {
                 return NotFound();

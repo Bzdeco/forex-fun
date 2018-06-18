@@ -1,0 +1,23 @@
+<div class='container'>
+  <div class='col-sm-3'>
+    <app-nav-menu></app-nav-menu>
+  </div>
+  <div class='col-sm-9'>
+    <table class='table'>
+      <thead>
+        <tr>
+          <th>Position</th>
+          <th>User</th>
+          <th>Fortune</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let userFortune of userFortunes; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ userFortune.Name }}</td>
+          <td>{{ userFortune.Fortune | number:'1.5-5' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

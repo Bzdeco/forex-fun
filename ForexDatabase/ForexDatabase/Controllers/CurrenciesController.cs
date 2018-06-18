@@ -7,12 +7,15 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using ForexDatabase.DAL;
 using Model;
 
 namespace ForexDatabase.Controllers
 {
+    [Authorize]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class CurrenciesController : ApiController
     {
         private DatabaseContext db = new DatabaseContext();
