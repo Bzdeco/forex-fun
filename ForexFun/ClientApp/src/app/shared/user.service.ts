@@ -14,7 +14,8 @@ export class UserService {
       Username: user.Username,
       Password: user.Password
     };
-    return this.http.post(this.url + "api/register", postBody);
+    var requestHeaders = new HttpHeaders({ 'No-Auth': 'True' });
+    return this.http.post(this.url + "api/register", postBody, { headers: requestHeaders });
   }
 
   authenticateUser(username: string, password: string) {

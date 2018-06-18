@@ -61,14 +61,14 @@ namespace ForexDatabase.Currencies
                 {
                     // Get the currency rate
                     List<CurrencyRate> currencyRates = await GetCurrencyAsync(client.BaseAddress.ToString(),
-                        "CmRPGdFegd5R2P8IKuQzAEei3d3xmn0m", currencyName);
+                        "4GOlRVjlyHsah857qPCoy6C46leXoQqA", currencyName);
                     currencyRates.ForEach(currencyRate => AddToDictionary(currencyRate));
                 }
                 catch (Exception e)
                 {
                     Console.WriteLine(e.Message);
                 }
-                await Task.Delay(6000);
+                await Task.Delay(60000);
             }
         }
     }

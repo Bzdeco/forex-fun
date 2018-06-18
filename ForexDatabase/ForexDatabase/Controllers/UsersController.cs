@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using ForexDatabase.DAL;
 using Model;
@@ -24,6 +25,7 @@ namespace ForexDatabase.Controllers
         }
 
         // GET: api/Users/5
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         [ResponseType(typeof(User))]
         public IHttpActionResult GetUser(int id)
         {

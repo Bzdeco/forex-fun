@@ -22,6 +22,11 @@
                 <span class='glyphicon glyphicon-th-list'></span> Dashboard
               </a>
             </li>
+            <li [routerLinkActive]='["link-active"]'>
+              <a [routerLink]='["/ranking"]' (click)='collapse()'>
+                <span class='glyphicon glyphicon-th-list'></span> Ranking
+              </a>
+            </li>
           </ul>
         </div>
     </div>
