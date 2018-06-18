@@ -20,15 +20,16 @@ export class SignInComponent implements OnInit {
       (data: any) => {
         console.log('Login successful');
         localStorage.setItem('token', data.access_token);
-        this.router.navigate(['/counter']); // TODO change
+        this.router.navigate(['/dashboard']);
       },
       (err: HttpErrorResponse) => {
         console.log('Login error');
+        this.router.navigate(['/'])
       });
   }
 
   Logout() {
     localStorage.removeItem('token');
-    this.router.navigate(['/user']);
+    this.router.navigate(['/']);
   }
 }
