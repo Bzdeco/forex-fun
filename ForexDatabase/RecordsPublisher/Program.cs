@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Confluent.Kafka;
@@ -56,26 +57,39 @@ namespace RecordsPublisher
 
     class PublisherJob : IJob
     {
-        private static readonly string USERS_TOPIC = "user-log";
-        private static readonly string TRANSACTIONS_TOPIC = "transaction-log";
+        private static readonly string WALLETS_TOPIC = "wallet-log";
         private static readonly Dictionary<string, object> kafkaConfig = new Dictionary<string, object>
         {
             { "bootstrap.servers", "192.168.43.70:9092" }
         };
 
+        private HttpClient client = new HttpClient();
+
         public async Task Execute(IJobExecutionContext context)
         {
             Console.WriteLine("Task launched.");
-
-            string usersCount = "0";
-            string transactionsCount = "0";
+            int walletsCount = 0;
+            client.BaseAddress = new Uri("http://localhost:50382");
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+            HttpResponseMessage response = await client.GetAsync("/api/wallets");
+            if (response.IsSuccessStatusCode)
+            {
+                var wallets = await response.Content.ReadAsAsync<List<Wallet>>();
+                walletsCount = wallets.Count();
+                Console.WriteLine("received size: " + walletsCount);
+            } else
+            {
+                Console.WriteLine("error");
+                return;
+            }
 
             using (var producer = new Producer<Null, string>(kafkaConfig, null, new StringSerializer(Encoding.UTF8)))
             {
-                Console.WriteLine("Attempting to write data: users - " + usersCount + ", transactions - " + transactionsCount);
-                var usersResult = producer.ProduceAsync(USERS_TOPIC, null, usersCount).Result;
-                var transactionsResult = producer.ProduceAsync(TRANSACTIONS_TOPIC, null, transactionsCount).Result;
-                await Console.Out.WriteLineAsync("Got data: users - " + usersResult + ", transactions - " + transactionsResult);
+                Console.WriteLine("Attempting to write wallets data: " + walletsCount);
+                var walletsResult = producer.ProduceAsync(WALLETS_TOPIC, null, walletsCount+"").Result;
+                await Console.Out.WriteLineAsync("Received response: " + walletsResult);
             }
         }
     }
