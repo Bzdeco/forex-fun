@@ -1,4 +1,5 @@
-﻿using ForexDatabase.DAL;
+﻿using ForexDatabase.Currencies;
+using ForexDatabase.DAL;
 using ForexDatabase.Models;
 using Microsoft.AspNet.Identity;
 using PostgreSQL.AspNet.Identity.EntityFramework;
@@ -16,6 +17,14 @@ namespace ForexDatabase.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class AuthenticationController : ApiController
     {
+
+        ICurrencyRates currencyRates;
+
+        public AuthenticationController(ICurrencyRates currencyRates)
+        {
+            this.currencyRates = currencyRates;
+        }
+
         [HttpPost]
         [Route("api/register")]
         public IdentityResult Register(ForexFunUserModel user)
@@ -24,6 +33,7 @@ namespace ForexDatabase.Controllers
             var manager = new UserManager<ForexFunUser>(userStore);
             var forexFunUser = new ForexFunUser { UserName = user.Username };
             IdentityResult result = manager.Create(forexFunUser, user.Password);
+            new UsersController().PostUser(new Model.User { UserId = forexFunUser.Id, Username = forexFunUser.UserName });
             return result;
         }
 
@@ -46,5 +56,7 @@ namespace ForexDatabase.Controllers
             IEnumerable<Claim> claims = identityClaims.Claims;
             return identityClaims.FindFirst("Username").Value;
         }
+
+
     }
 }

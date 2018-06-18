@@ -26,5 +26,7 @@ namespace ForexDatabase.DAL
             modelBuilder.HasDefaultSchema("public");
             base.OnModelCreating(modelBuilder);
         }
+
+        public System.Data.Entity.DbSet<Model.User> Users { get; set; }
     }
 }

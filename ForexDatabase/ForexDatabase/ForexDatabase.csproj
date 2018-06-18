@@ -247,6 +247,7 @@
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\WalletsController.cs" />
     <Compile Include="Currencies\CurrencyRates.cs" />
     <Compile Include="Currencies\ICurrencyRates.cs" />

@@ -28,15 +28,15 @@ export class RankingComponent implements OnInit {
       this.wallets.forEach((wallet, index) => {
         this.http.get<Currency>(this.url + 'api/Currencies/' + wallet.CurrencyId).subscribe(resultCurrency => {
           wallet.Name = resultCurrency.Name;
-          this.http.get<string>(this.url + 'api/username').subscribe(resultUser => {
+          this.http.get<NamedUser>(this.url + 'api/users/' + wallet.UserId).subscribe(resultUser => {
             var exchangeRate = this.currencies.find(currency => currency.CurrencyId === wallet.CurrencyId).Value;
             var usdValue = wallet.Amount * exchangeRate;
-            var currentFortune = this.userFortunes.find(userFortune => userFortune.Name === resultUser);
+            var currentFortune = this.userFortunes.find(userFortune => userFortune.Name === resultUser.Username);
             if (currentFortune === undefined) {
-              this.userFortunes.push({ Name: resultUser, Fortune: usdValue });
+              this.userFortunes.push({ Name: resultUser.Username, Fortune: usdValue });
             }
             else {
-              this.userFortunes.find(userFortune => userFortune.Name === resultUser).Fortune = usdValue + currentFortune.Fortune;
+              this.userFortunes.find(userFortune => userFortune.Name === resultUser.Username).Fortune = usdValue + currentFortune.Fortune;
             }
               this.userFortunes.sort((a, b): number => {
                 return b.Fortune - a.Fortune;
@@ -67,4 +67,9 @@ interface Currency {
 interface UserFortune {
   Name: string;
   Fortune: number;
+}
+
+interface NamedUser {
+  UserId: string;
+  Username: string;
 }

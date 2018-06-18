@@ -24,12 +24,18 @@ namespace ForexDatabase.Currencies
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
-            Task.Run(() => RunAsync("ETHUSD"));
-            Task.Run(() => RunAsync("BTCUSD"));
-            Task.Run(() => RunAsync("LTCUSD"));
-            Task.Run(() => RunAsync("XRPUSD"));
-            Task.Run(() => RunAsync("DSHUSD"));
-            Task.Run(() => RunAsync("BCHUSD"));
+            List<string> currencies = new List<string>(new string[] { "ETHUSD", "BTCUSD", "LTCUSD", "XRPUSD", "DSHUSD", "BCHUSD" });
+            //currencies.ForEach(currencyName =>
+            //{
+            //    Debug.WriteLine("Adding currency started");
+            //    List<CurrencyRate> currencyRates = GetCurrencyAsync(client.BaseAddress.ToString(),
+            //                "4GOlRVjlyHsah857qPCoy6C46leXoQqA", currencyName).;
+            //    currencyRates.ForEach(currencyRate => AddToDictionary(currencyRate));
+            //    Debug.WriteLine("Adding currency ended");
+            //});
+            Debug.WriteLine("Starting tasks currency");
+            currencies.ForEach(currencyName => Task.Run(() => RunAsync(currencyName)));
+            Debug.WriteLine("Started tasks currency");
         }
 
         private void AddToDictionary(CurrencyRate currencyRate)
