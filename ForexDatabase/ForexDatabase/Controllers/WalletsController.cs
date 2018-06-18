@@ -14,22 +14,20 @@ using Model;
 
 namespace ForexDatabase.Controllers
 {
+    [Authorize]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class WalletsController : ApiController
     {
         private DatabaseContext db = new DatabaseContext();
 
         // GET: api/Wallets
-        [Authorize]
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IQueryable<Wallet> GetWallets()
         {
             return db.Wallets;
         }
 
         // GET: api/Wallets/5
-        [Authorize]
         [ResponseType(typeof(IQueryable<Wallet>))]
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult GetWallet(string id)
         {
             IQueryable<Wallet> wallets = db.Wallets;
@@ -45,9 +43,7 @@ namespace ForexDatabase.Controllers
 
         // PUT: api/Wallets/5
         [ResponseType(typeof(void))]
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
         [HttpPut]
-        [Authorize]
         public IHttpActionResult PutWallet(int id, Wallet wallet)
         {
             if (!ModelState.IsValid)
@@ -83,7 +79,6 @@ namespace ForexDatabase.Controllers
 
         // POST: api/Wallets
         [ResponseType(typeof(Wallet))]
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
         [HttpPost]
         public IHttpActionResult PostWallet(Wallet wallet)
         {
@@ -100,8 +95,6 @@ namespace ForexDatabase.Controllers
 
         // DELETE: api/Wallets/5
         [ResponseType(typeof(Wallet))]
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
-        [Authorize]
         public IHttpActionResult DeleteWallet(int id)
         {
             Wallet wallet = db.Wallets.Find(id);
@@ -124,9 +117,7 @@ namespace ForexDatabase.Controllers
             }
             base.Dispose(disposing);
         }
-
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
-        [Authorize]
+        
         private bool WalletExists(int id)
         {
             return db.Wallets.Count(e => e.Id == id) > 0;

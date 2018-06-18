@@ -10,7 +10,8 @@ using System.Web.Http.Cors;
 
 namespace ForexDatabase.Controllers
 {
-    //[Authorize]
+    [Authorize]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class DashboardController : ApiController
     {
         ICurrencyRates currencyRates;
@@ -21,7 +22,6 @@ namespace ForexDatabase.Controllers
         }
 
         // GET: Dashboard
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
         [Route("api/dashboard")]
         [HttpGet]
         public IEnumerable<CurrencyValue> CurrenciesValues()

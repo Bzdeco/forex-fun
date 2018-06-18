@@ -91,7 +91,7 @@ export class DashboardComponent implements OnInit {
     console.log("Amount: " + amount);
     var exchangeCurrency = this.currencies.find(currency => currency.CurrencyId === currencyId);
     var usdWallet = this.wallets.find(wallet => wallet.CurrencyId === 1);
-    usdWallet.Amount += Number(amount) * exchangeCurrency.Value*0.99;
+    usdWallet.Amount += Number(amount) * exchangeCurrency.Value * 0.99;
     console.log("Putting USD wallet: ");
     this.http.put(this.url + "api/wallets/" + usdWallet.Id, usdWallet).subscribe();
     var currencyWallet = this.wallets.find(wallet => wallet.CurrencyId === currencyId);
@@ -126,6 +126,7 @@ export class DashboardComponent implements OnInit {
         }, error => console.error(error))
       });
     }, error => console.error(error));
+  }
 }
 
 interface Wallet {

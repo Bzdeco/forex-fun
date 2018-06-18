@@ -13,11 +13,11 @@ using System.Web.Http.Cors;
 
 namespace ForexDatabase.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class AuthenticationController : ApiController
     {
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
-        [Route("api/register")]
         [HttpPost]
+        [Route("api/register")]
         public IdentityResult Register(ForexFunUserModel user)
         {
             var userStore = new UserStore<ForexFunUser>(new ForexFunUserContext());
@@ -27,7 +27,6 @@ namespace ForexDatabase.Controllers
             return result;
         }
 
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
         [HttpGet]
         [Authorize]
         [Route("api/userid")]
@@ -37,8 +36,7 @@ namespace ForexDatabase.Controllers
             IEnumerable<Claim> claims = identityClaims.Claims;
             return identityClaims.FindFirst("Id").Value;
         }
-
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
+        
         [HttpGet]
         [Authorize]
         [Route("api/username")]

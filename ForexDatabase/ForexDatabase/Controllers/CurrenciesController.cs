@@ -15,12 +15,12 @@ using Model;
 namespace ForexDatabase.Controllers
 {
     [Authorize]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class CurrenciesController : ApiController
     {
         private DatabaseContext db = new DatabaseContext();
 
         // GET: api/Currencies
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IQueryable<Currency> GetCurrencies()
         {
             return db.Currencies;
@@ -28,7 +28,6 @@ namespace ForexDatabase.Controllers
 
         // GET: api/Currencies/5
         [ResponseType(typeof(Currency))]
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult GetCurrency(int id)
         {
             Currency currency = db.Currencies.Find(id);
@@ -41,7 +40,6 @@ namespace ForexDatabase.Controllers
         }
 
         // PUT: api/Currencies/5
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutCurrency(int id, Currency currency)
         {
@@ -77,7 +75,6 @@ namespace ForexDatabase.Controllers
         }
 
         // POST: api/Currencies
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
         [ResponseType(typeof(Currency))]
         public IHttpActionResult PostCurrency(Currency currency)
         {
@@ -93,7 +90,6 @@ namespace ForexDatabase.Controllers
         }
 
         // DELETE: api/Currencies/5
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
         [ResponseType(typeof(Currency))]
         public IHttpActionResult DeleteCurrency(int id)
         {
