@@ -20,6 +20,7 @@ export class SignInComponent implements OnInit {
       (data: any) => {
         console.log('Login successful');
         localStorage.setItem('token', data.access_token);
+        this.userService.createWallet();
         this.router.navigate(['/dashboard']);
       },
       (err: HttpErrorResponse) => {

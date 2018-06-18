@@ -10,7 +10,7 @@ using System.Web.Http.Cors;
 
 namespace ForexDatabase.Controllers
 {
-
+    //[Authorize]
     public class DashboardController : ApiController
     {
         ICurrencyRates currencyRates;

@@ -27,4 +27,24 @@ export class UserService {
   getUserId() {
     return this.http.get(this.url + 'api/userid');
   }
+
+  createWallet() {
+    this.getUserId().subscribe(
+      (id: string) => {
+        this.http.get(this.url + 'api/wallets/' + id).subscribe(
+          (data: any) => {
+            const wallet = {
+              UserId: id,
+              CurrencyId: 1,
+              Amount: 10000
+            };
+            console.log(data);
+            if (data.length === 0) {
+              console.log("Creating wallet");
+              this.http.post(this.url + 'api/wallets', wallet).subscribe((data) => console.log("Succeececssc"));
+            }
+          }
+        );
+      });
+  }
 }

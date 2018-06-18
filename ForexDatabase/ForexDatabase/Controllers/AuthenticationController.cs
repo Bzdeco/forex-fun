@@ -37,5 +37,16 @@ namespace ForexDatabase.Controllers
             IEnumerable<Claim> claims = identityClaims.Claims;
             return identityClaims.FindFirst("Id").Value;
         }
+
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
+        [HttpGet]
+        [Authorize]
+        [Route("api/username")]
+        public string GetUserName()
+        {
+            var identityClaims = (ClaimsIdentity) User.Identity;
+            IEnumerable<Claim> claims = identityClaims.Claims;
+            return identityClaims.FindFirst("Username").Value;
+        }
     }
 }

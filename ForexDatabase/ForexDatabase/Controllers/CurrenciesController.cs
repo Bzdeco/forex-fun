@@ -14,6 +14,7 @@ using Model;
 
 namespace ForexDatabase.Controllers
 {
+    [Authorize]
     public class CurrenciesController : ApiController
     {
         private DatabaseContext db = new DatabaseContext();
