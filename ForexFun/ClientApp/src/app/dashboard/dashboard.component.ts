@@ -1,6 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UserService } from '../shared/user.service';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/interval';
 
 @Component({
   selector: 'app-dashboard',
@@ -29,6 +31,10 @@ export class DashboardComponent implements OnInit {
         }, error => console.error(error));
       }
     );
+    this.updateState();
+    Observable.interval(60000).subscribe((ignore) => {
+      this.updateState();
+    });
   }
   public currencies: Currency[];
   public wallets: Wallet[];
@@ -36,6 +42,19 @@ export class DashboardComponent implements OnInit {
   readonly url = "http://localhost:50382/";
 
   constructor(private http: HttpClient, private userService: UserService) {
+    http.get<Currency[]>(this.url + 'api/dashboard').subscribe(result => {
+      this.currencies = result;
+      console.log(result);
+    }, error => console.error(error));
+    http.get<Wallet[]>(this.url + 'api/wallets/' + 1).subscribe(result => {
+      this.wallets = result;
+      this.wallets.forEach((wallet, index) => {
+        http.get<Currency>(this.url + 'api/Currencies/' + wallet.CurrencyId).subscribe(resultCurrency => {
+          console.log(wallet.Id);
+          wallet.Name = resultCurrency.Name;
+        }, error => console.error(error))
+      });
+    }, error => console.error(error));
   }
 
   buyCurrency(currencyId, amount) {
@@ -101,3 +120,21 @@ interface Currency {
   Name: string;
   Value: number;
 }
+
+  constructor(private http: HttpClient, private userService: UserService) { }
+
+  updateState() {
+    this.http.get<Currency[]>(this.url + 'api/dashboard').subscribe(result => {
+      this.currencies = result;
+      console.log(result);
+    }, error => console.error(error));
+
+    this.http.get<Wallet[]>(this.url + 'api/wallets/' + 1).subscribe(result => {
+      this.wallets = result;
+      this.wallets.forEach((wallet, index) => {
+        this.http.get<Currency>(this.url + 'api/Currencies/' + wallet.CurrencyId).subscribe(resultCurrency => {
+          console.log(wallet.Id);
+          wallet.Name = resultCurrency.Name;
+        }, error => console.error(error))
+      });
+    }, error => console.error(error));
