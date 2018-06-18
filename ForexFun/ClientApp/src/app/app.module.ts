@@ -13,6 +13,7 @@ import { SignInComponent } from './user/sign-in/sign-in.component';
 import { AuthenticationGuard } from './authentication/authentication.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthenticationInterceptor } from './authentication/authentication-interceptor';
+import { RankingComponent } from './ranking/ranking.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AuthenticationInterceptor } from './authentication/authentication-inter
     SignUpComponent,
     UserComponent,
     SignInComponent,
-    DashboardComponent
+    DashboardComponent,
+    RankingComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -29,7 +31,8 @@ import { AuthenticationInterceptor } from './authentication/authentication-inter
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: UserComponent, pathMatch: 'full' },
-      { path: 'dashboard', component: DashboardComponent, canActivate: [AuthenticationGuard] }
+      { path: 'dashboard', component: DashboardComponent, canActivate: [AuthenticationGuard] },
+      { path: 'ranking', component: RankingComponent }
     ])
   ],
   providers: [
