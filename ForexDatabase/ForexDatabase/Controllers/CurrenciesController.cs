@@ -27,7 +27,7 @@ namespace ForexDatabase.Controllers
 
         // GET: api/Currencies/5
         [ResponseType(typeof(Currency))]
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
+        //[EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult GetCurrency(int id)
         {
             Currency currency = db.Currencies.Find(id);

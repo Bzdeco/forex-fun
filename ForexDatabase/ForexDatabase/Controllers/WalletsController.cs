@@ -27,7 +27,7 @@ namespace ForexDatabase.Controllers
 
         // GET: api/Wallets/5
         [ResponseType(typeof(IQueryable<Wallet>))]
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
+        //[EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult GetWallet(int id)
         {
             IQueryable<Wallet> wallets = db.Wallets;

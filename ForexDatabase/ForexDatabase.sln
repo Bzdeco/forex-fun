@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostgreSQL.AspNet.Identity.EntityFramework", "PostgreSQLEF\src\PostgreSQL.AspNet.Identity.EntityFramework\PostgreSQL.AspNet.Identity.EntityFramework.csproj", "{FA718219-F0D7-4E24-855F-3CB01C2A857E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{7C0F1354-982A-4FF6-A167-F4CAA9E991FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecordsPublisher", "RecordsPublisher\RecordsPublisher.csproj", "{6399A94E-64BB-47D8-8AB2-72F22E0E4F81}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{FA718219-F0D7-4E24-855F-3CB01C2A857E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA718219-F0D7-4E24-855F-3CB01C2A857E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA718219-F0D7-4E24-855F-3CB01C2A857E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C0F1354-982A-4FF6-A167-F4CAA9E991FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C0F1354-982A-4FF6-A167-F4CAA9E991FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C0F1354-982A-4FF6-A167-F4CAA9E991FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C0F1354-982A-4FF6-A167-F4CAA9E991FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6399A94E-64BB-47D8-8AB2-72F22E0E4F81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6399A94E-64BB-47D8-8AB2-72F22E0E4F81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6399A94E-64BB-47D8-8AB2-72F22E0E4F81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6399A94E-64BB-47D8-8AB2-72F22E0E4F81}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
