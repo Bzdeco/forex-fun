@@ -67,7 +67,7 @@ namespace ForexDatabase.Currencies
                 {
                     // Get the currency rate
                     List<CurrencyRate> currencyRates = await GetCurrencyAsync(client.BaseAddress.ToString(),
-                        "4GOlRVjlyHsah857qPCoy6C46leXoQqA", currencyName);
+                        "KoepnX5QLsaKZD9TmGIrO67Idwaq5dns", currencyName);
                     currencyRates.ForEach(currencyRate => AddToDictionary(currencyRate));
                 }
                 catch (Exception e)
