@@ -27,7 +27,7 @@ namespace ForexDatabase.Controllers
 
         // GET: api/Wallets/5
         [ResponseType(typeof(IQueryable<Wallet>))]
-        //[EnableCors(origins: "*", headers: "*", methods: "*")]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult GetWallet(int id)
         {
             IQueryable<Wallet> wallets = db.Wallets;
@@ -97,6 +97,7 @@ namespace ForexDatabase.Controllers
 
         // DELETE: api/Wallets/5
         [ResponseType(typeof(Wallet))]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult DeleteWallet(int id)
         {
             Wallet wallet = db.Wallets.Find(id);
@@ -120,6 +121,7 @@ namespace ForexDatabase.Controllers
             base.Dispose(disposing);
         }
 
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         private bool WalletExists(int id)
         {
             return db.Wallets.Count(e => e.Id == id) > 0;

@@ -14,7 +14,6 @@ using Model;
 
 namespace ForexDatabase.Controllers
 {
-    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class TransactionsController : ApiController
     {
         private DatabaseContext db = new DatabaseContext();
@@ -26,6 +25,7 @@ namespace ForexDatabase.Controllers
         }
 
         // GET: api/Transactions/5
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         [ResponseType(typeof(Transaction))]
         public IHttpActionResult GetTransaction(int id)
         {
@@ -39,6 +39,7 @@ namespace ForexDatabase.Controllers
         }
 
         // PUT: api/Transactions/5
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         [ResponseType(typeof(void))]
         public IHttpActionResult PutTransaction(int id, Transaction transaction)
         {
@@ -74,6 +75,7 @@ namespace ForexDatabase.Controllers
         }
 
         // POST: api/Transactions
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         [ResponseType(typeof(Transaction))]
         public IHttpActionResult PostTransaction(Transaction transaction)
         {
@@ -89,6 +91,7 @@ namespace ForexDatabase.Controllers
         }
 
         // DELETE: api/Transactions/5
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         [ResponseType(typeof(Transaction))]
         public IHttpActionResult DeleteTransaction(int id)
         {
