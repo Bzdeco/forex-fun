@@ -14,3 +14,6 @@ In DatabaseService there is an example `RecordsPublisher` storing database walle
 Web API Token Based Authentication and Registration with Angular 5 done with tutorials:
 - [Tutorial Part 1 - Web API Registration](http://www.dotnetmob.com/angular-5-tutorial/angular-5-user-registration-web-api/)
 - [Tutorial Part 2 - Web API Token Based Authentication Login and Logout](http://www.dotnetmob.com/angular-5-tutorial/angular-5-login-and-logout-with-web-api-using-token-based-authentication/)
+
+PostgreSQL port for ASP.NET Identity:
+- [ASP.NET Identity provider using EntityFramework for PostgreSQL](https://github.com/vincechan/PostgreSQL.AspNet.Identity.EntityFramework)
