@@ -1,28 +1,26 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
-import { SignUpComponent } from './sign-up/sign-up.component';
 import { UserService } from './shared/user.service';
 import { UserComponent } from './user/user.component';
+import { SignUpComponent } from './user/sign-up/sign-up.component';
+import { SignInComponent } from './user/sign-in/sign-in.component';
+import { AuthenticationGuard } from './authentication/authentication.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AuthenticationInterceptor } from './authentication/authentication-interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
-    HomeComponent,
-    CounterComponent,
-    FetchDataComponent,
     SignUpComponent,
     UserComponent,
+    SignInComponent,
     DashboardComponent
   ],
   imports: [
@@ -30,14 +28,19 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
-      { path: 'register', component: SignUpComponent },
-      { path: 'dashboard', component: DashboardComponent }
+      { path: '', component: UserComponent, pathMatch: 'full' },
+      { path: 'dashboard', component: DashboardComponent, canActivate: [AuthenticationGuard] }
     ])
   ],
-  providers: [UserService],
+  providers: [
+    UserService,
+    AuthenticationGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthenticationInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

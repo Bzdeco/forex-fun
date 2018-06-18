@@ -1,0 +1,16 @@
+<div class="row text-center">
+  <h1>Sign In</h1>
+</div>
+<div class="row">
+  <form #userRegistrationForm="ngForm" (ngSubmit)="OnSubmit(Username.value, Password.value)">
+    <div class="form-group">
+      <label for="sign-in-username">Username:</label>
+      <input id="sign-in-username" class="form-control" type="text" name="Username" #Username ngModel required />
+    </div>
+    <div class="form-group">
+      <label for="sign-in-password">Password:</label>
+      <input id="sign-in-password" class="form-control" type="password" name="Password" #Password ngModel required />
+    </div>
+    <button type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
+  </form>
+</div>

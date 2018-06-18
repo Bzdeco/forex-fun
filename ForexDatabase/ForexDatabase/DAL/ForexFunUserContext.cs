@@ -9,7 +9,7 @@ namespace ForexDatabase.DAL
 {
     public class ForexFunUserContext : IdentityDbContext<ForexFunUser>
     {
-        public ForexFunUserContext() : base("DatabaseContext", false)
+        public ForexFunUserContext() : base("AuthDbContext", false)
         {
         }
 
@@ -18,7 +18,6 @@ namespace ForexDatabase.DAL
             base.OnModelCreating(modelBuilder);
             modelBuilder.HasDefaultSchema("public");
             modelBuilder.Entity<ForexFunUser>().ToTable("User");
-            // TODO is necessary?
             modelBuilder.Entity<IdentityRole>().ToTable("Role");
             modelBuilder.Entity<IdentityUserRole>().ToTable("UserRole");
             modelBuilder.Entity<IdentityUserClaim>().ToTable("UserClaim");

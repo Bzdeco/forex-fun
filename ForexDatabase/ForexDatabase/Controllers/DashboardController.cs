@@ -21,7 +21,7 @@ namespace ForexDatabase.Controllers
         }
 
         // GET: Dashboard
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
+        //[EnableCors(origins: "*", headers: "*", methods: "*")]
         [Route("api/dashboard")]
         [HttpGet]
         public IEnumerable<CurrencyValue> CurrenciesValues()
