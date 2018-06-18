@@ -8,7 +8,7 @@ To run ForexFun requires:
 
 ForexFun is an Angular 5 Single Page Application, can be run from Visual Studio or by running `ng serve` in `ForexFun/ClientApp`.
 
-In DatabaseService there is an example `RecordsPublisher` storing database wallets count using Kafka. RecordsPublisher uses a task which publishes to Kafka with a configurable frequency.
+In DatabaseService there is an example `RecordsPublisher` publishing database wallets count to Kafka. `RecordsPublisher` uses a task which publishes to Kafka with a configurable frequency.
 
 # Credits
 Web API Token Based Authentication and Registration with Angular 5 done with tutorials:
