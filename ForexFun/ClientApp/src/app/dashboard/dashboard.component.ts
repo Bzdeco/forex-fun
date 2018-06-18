@@ -32,7 +32,7 @@ export class DashboardComponent implements OnInit {
       }
     );
     this.updateState();
-    Observable.interval(10000).subscribe((ignore) => {
+    Observable.interval(20000).subscribe((ignore) => {
       this.updateState();
     });
   }
@@ -64,6 +64,7 @@ export class DashboardComponent implements OnInit {
     var currencyWallet = this.wallets.find(wallet => wallet.CurrencyId === currencyId);
     var usdWallet = this.wallets.find(wallet => wallet.CurrencyId === 1); //TODO
     var exchangeCurrency = this.currencies.find(currency => currency.CurrencyId === currencyId);
+    if (usdWallet.Amount - Number(amount) * exchangeCurrency.Value * 1.01 < 0) return;
     usdWallet.Amount -= Number(amount) * exchangeCurrency.Value * 1.01;
     console.log("Putting USD wallet: ");
     this.http.put(this.url + "api/wallets/" + usdWallet.Id, usdWallet).subscribe();
